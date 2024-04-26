@@ -211,7 +211,7 @@ Model2A <- '#### PACC MODEL SETUP
                PACC_6 ~~ g*PIB_3
                PACC_9 ~~ g*PIB_4
                
-               ## changes in pib on pacc
+               ## pacc changes on pib levels
                dpacc12 ~ i*lpib1
                dpacc45 ~ i*lpib4
                dpacc67 ~ i*lpib6

@@ -211,7 +211,7 @@ Model4A <- '#### PACC MODEL SETUP
                PIB_2 ~~ c*PACC_4
                PIB_3 ~~ c*PACC_6
                
-               ## changes in pacc on pib
+               ## changes in pib on pacc levels
                dpib14 ~ beta_yx*lpacc3
                dpib46 ~ beta_yx*lpacc5
                dpib69 ~ beta_yx*lpacc8

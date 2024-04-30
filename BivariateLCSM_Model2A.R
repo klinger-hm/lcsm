@@ -87,34 +87,34 @@ Model2A <- '#### PACC MODEL SETUP
                lpacc9 ~~ 0*lpacc9
 
                ## constrain residuals
-               PACC_1 ~~ c1*PACC_1
-               PACC_2 ~~ c1*PACC_2
-               PACC_3 ~~ c1*PACC_3
-               PACC_4 ~~ c1*PACC_4
-               PACC_5 ~~ c1*PACC_5
-               PACC_6 ~~ c1*PACC_6
-               PACC_7 ~~ c1*PACC_7
-               PACC_8 ~~ c1*PACC_8
-               PACC_9 ~~ c1*PACC_9
+               PACC_1 ~~ r1*PACC_1
+               PACC_2 ~~ r1*PACC_2
+               PACC_3 ~~ r1*PACC_3
+               PACC_4 ~~ r1*PACC_4
+               PACC_5 ~~ r1*PACC_5
+               PACC_6 ~~ r1*PACC_6
+               PACC_7 ~~ r1*PACC_7
+               PACC_8 ~~ r1*PACC_8
+               PACC_9 ~~ r1*PACC_9
 
                ## proportional change
-               dpacc12 ~ a1*lpacc1
-               dpacc23 ~ a1*lpacc2
-               dpacc34 ~ a1*lpacc3
-               dpacc45 ~ a1*lpacc4
-               dpacc56 ~ a1*lpacc5
-               dpacc67 ~ a1*lpacc6
-               dpacc78 ~ a1*lpacc7
-               dpacc89 ~ a1*lpacc8
+               dpacc12 ~ p1*lpacc1
+               dpacc23 ~ p1*lpacc2
+               dpacc34 ~ p1*lpacc3
+               dpacc45 ~ p1*lpacc4
+               dpacc56 ~ p1*lpacc5
+               dpacc67 ~ p1*lpacc6
+               dpacc78 ~ p1*lpacc7
+               dpacc89 ~ p1*lpacc8
                
                ## dynamic change
-               dpacc23 ~ b*dpacc12
-               dpacc34 ~ b*dpacc23
-               dpacc45 ~ b*dpacc34
-               dpacc56 ~ b*dpacc45
-               dpacc67 ~ b*dpacc56
-               dpacc78 ~ b*dpacc67
-               dpacc89 ~ b*dpacc78
+               dpacc23 ~ d1*dpacc12
+               dpacc34 ~ d1*dpacc23
+               dpacc45 ~ d1*dpacc34
+               dpacc56 ~ d1*dpacc45
+               dpacc67 ~ d1*dpacc56
+               dpacc78 ~ d1*dpacc67
+               dpacc89 ~ d1*dpacc78
 
                ## latent slope
                pacc_s =~ 1*dpacc12 + 1*dpacc23 + 1*dpacc34 + 1*dpacc45 + 1*dpacc56 + 1*dpacc67 + 1*dpacc78 + 1*dpacc89
@@ -173,19 +173,19 @@ Model2A <- '#### PACC MODEL SETUP
                dpib69 ~~ 0*dpib69
 
                ## constrain residuals
-               PIB_1 ~~ c2*PIB_1
-               PIB_2 ~~ c2*PIB_2
-               PIB_3 ~~ c2*PIB_3
-               PIB_4 ~~ c2*PIB_4
+               PIB_1 ~~ r2*PIB_1
+               PIB_2 ~~ r2*PIB_2
+               PIB_3 ~~ r2*PIB_3
+               PIB_4 ~~ r2*PIB_4
                
                ## proportional change
-               dpib14 ~ a2*lpib1
-               dpib46 ~ a2*lpib4
-               dpib69 ~ a2*lpib6
+               dpib14 ~ p2*lpib1
+               dpib46 ~ p2*lpib4
+               dpib69 ~ p2*lpib6
 
                ## dynamic change
-               dpib46 ~ b2*dpib14
-               dpib69 ~ b2*dpib46
+               dpib46 ~ d2*dpib14
+               dpib69 ~ d2*dpib46
 
                ## latent slope
                pib_s =~ 1*dpib14+ 1*dpib46 + 1*dpib69
@@ -206,15 +206,15 @@ Model2A <- '#### PACC MODEL SETUP
                pacc_s ~~ pib_s
 
                ## correlations b/w data points - constrained
-               PACC_1 ~~ g*PIB_1
-               PACC_4 ~~ g*PIB_2
-               PACC_6 ~~ g*PIB_3
-               PACC_9 ~~ g*PIB_4
+               PACC_1 ~~ c*PIB_1
+               PACC_4 ~~ c*PIB_2
+               PACC_6 ~~ c*PIB_3
+               PACC_9 ~~ c*PIB_4
                
                ## pacc changes on pib levels
-               dpacc12 ~ i*lpib1
-               dpacc45 ~ i*lpib4
-               dpacc67 ~ i*lpib6
+               dpacc12 ~ beta*lpib1
+               dpacc45 ~ beta*lpib4
+               dpacc67 ~ beta*lpib6
                
                 ## Covariates
   
@@ -248,6 +248,6 @@ Model2A <- '#### PACC MODEL SETUP
                 pacc_s ~ FDGcomp
                 pib_s ~ FDGcomp'
 
-Model2A_sem <- lavaan::sem(Model2A, data = wide_data_matched_neuro, missing = "fiml", fixed.x = FALSE)
+Model2A_sem <- lavaan::sem(Model2A, data = my_data, missing = "fiml", fixed.x = FALSE)
 
 summary(Model2A_sem, fit.measures = TRUE)  

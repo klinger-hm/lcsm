@@ -207,10 +207,10 @@ Model1 <- '#### PACC MODEL SETUP
                pacc_s ~~ pib_s
 
                ## correlations b/w data points - constrained
-               PACC_1 ~~ g*PIB_1
-               PACC_4 ~~ g*PIB_2
-               PACC_6 ~~ g*PIB_3
-               PACC_9 ~~ g*PIB_4
+               PACC_1 ~~ c*PIB_1
+               PACC_4 ~~ c*PIB_2
+               PACC_6 ~~ c*PIB_3
+               PACC_9 ~~ c*PIB_4
                
                ## Covariates
 

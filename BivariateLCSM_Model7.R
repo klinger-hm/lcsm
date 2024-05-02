@@ -1,6 +1,6 @@
 library(lavaan)
 
-Model6A <- '#### PACC MODEL SETUP
+Model7 <- '#### PACC MODEL SETUP
 
                ## modeling true scores
                lpacc1 =~ 1*PACC_1
@@ -261,8 +261,8 @@ Model6A <- '#### PACC MODEL SETUP
                 pacc_s ~ FDGcomp
                 pib_s ~ FDGcomp'
 
-Model6A_sem <- lavaan::sem(Model6A, data = my_data, missing = "fiml", fixed.x = FALSE)
+Model7_sem <- lavaan::sem(Model7, data = my_data, missing = "fiml", fixed.x = FALSE)
 
-summary(Model6A_sem, fit.measures = TRUE)
+summary(Model7_sem, fit.measures = TRUE)
 
 

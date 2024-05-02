@@ -1,0 +1,1 @@
+The scripts within this repository contain the R code used to run the bivariate latent changes score models in the paper "Latent change-on-change between amyloid accumulation and cognitive decline" by HM Klinger et al.

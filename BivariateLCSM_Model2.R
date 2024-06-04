@@ -218,35 +218,10 @@ Model2 <- '#### PACC MODEL SETUP
                
                 ## Covariates
   
-                pacc_i ~ PACCAge_1
-                pib_i ~ PACCAge_1
-                pacc_s ~ PACCAge_1
-                pib_s ~ PACCAge_1
-                
-                pacc_i ~ SEX
-                pib_i ~ SEX
-                pacc_s ~ SEX
-                pib_s ~ SEX
-                
-                pacc_i ~ YrsEd
-                pib_i ~ YrsEd
-                pacc_s ~ YrsEd
-                pib_s ~ YrsEd
-                
-                pacc_i ~ E4_Status
-                pib_i ~ E4_Status
-                pacc_s ~ E4_Status
-                pib_s ~ E4_Status
-  
-                pacc_i ~ MTL
-                pib_i ~ MTL
-                pacc_s ~ MTL
-                pib_s ~ MTL
-  
-                pacc_i ~ FDGcomp
-                pib_i ~ FDGcomp
-                pacc_s ~ FDGcomp
-                pib_s ~ FDGcomp'
+               pacc_i ~ PACCAge_1 + SEX + YrsEd + E4_Status + MTL + FDGcomp
+               pib_i ~ PACCAge_1 + SEX + YrsEd + E4_Status + MTL + FDGcomp
+               pacc_s ~ PACCAge_1 + SEX + YrsEd + E4_Status + MTL + FDGcomp
+               pib_s ~ PACCAge_1 + SEX + YrsEd + E4_Status + MTL + FDGcomp'
 
 Model2_sem <- lavaan::sem(Model2, data = my_data, missing = "fiml", fixed.x = FALSE)
 
